@@ -50,19 +50,17 @@ export default function Home({initialTodos, user}) {
 }
 
 export async function getServerSideProps(context) {
-  const session = auth0.getSession(context.req, context.res);
-  console.log(session)
-  try {
-    const todos = await table.select({}).firstPage();
-
-    return {
-        props: {
-            initialTodos: minifyRecords(todos),
-            user: session?.user || null,
-        },
-    };
-  } catch (error) {
-    console.log(error)
+  const session = await auth0.getSession(context.req, context.res);
+  let todos = [];
+  if (session?.user) {
+      todos = await table
+          .select({ filterByFormula: `userId = '${session.user.sub}'` })
+          .firstPage();
   }
-  
+  return {
+      props: {
+          initialTodos: minifyRecords(todos),
+          user: session?.user || null,
+      },
+  };
 }
