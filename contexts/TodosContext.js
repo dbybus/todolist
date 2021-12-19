@@ -15,6 +15,7 @@ const TodosProvider = ({children}) => {
     }
 
     const addTodo = async (todo) => {
+        console.log("ADD TODO ",todo)
         try {
             const res = await fetch('/api/createTodo',
             {
@@ -22,7 +23,7 @@ const TodosProvider = ({children}) => {
                body: JSON.stringify(todo),
                headers: {'Content-Type': 'application/json'} 
             });
-            const newTodo = res.json();
+            const newTodo = await res.json();
             setTodos((prevTodos) => {
                 const updatedTodos = [newTodo, ...prevTodos];
                 return updatedTodos;
