@@ -10,9 +10,15 @@
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.6.2",
     "airtable": "^0.11.1",
+    "bufferutil": "^4.0.5",
     "next": "^12.0.7",
+    "pipeline-ui": "^0.3.4",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-component": "^2.8.0",
+    "styled-components": "^5.3.3",
+    "utf-8-validate": "^5.0.7",
+    "window": "^4.2.7"
   },
   "devDependencies": {
     "eslint": "8.5.0",
