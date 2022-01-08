@@ -1,10 +1,18 @@
 import React from 'react';
-
+import Router from 'next/router'
 export default function NftCard({nft}) {
     
+    const cardDetails = (nft) => {
+        const {pathname} = Router
+      
+        if(pathname == '/MarketPlace' ){
+            Router.push({pathname: '/NftCardDetails', query: { id: nft.properties.image_integrity}});
+        }
+    }
+
     return (
-        <div className="bg-gray-200 w-full h-full py-5 flex justify-center items-center">
-    <div className="relative pl-1 bg-gray-200 flex justify-center rounded-xl hover:scale-105 duration-500 transform transition cursor-pointer">
+        <div className="bg-gray-100 w-full h-full py-5 flex justify-center items-center">
+    <div className="relative pl-1 bg-gray-100 flex justify-center rounded-xl hover:scale-105 duration-500 transform transition cursor-pointer" onClick={()=> cardDetails(nft)}>
 
         <div className="top-0 left-0 mt-3 px-2 rounded-lg absolute z-30 bg-green-500 text-gray-100 text-xs md:text-sm font-medium md:block">Open</div>
         <div className="top-0 left-0 h-2 md:h-3 mt-5 px-2 absolute z-20 bg-green-500"></div>

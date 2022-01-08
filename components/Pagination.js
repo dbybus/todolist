@@ -5,8 +5,6 @@ export default function Pagination({
     paginateBack,
     currentPage,
   }) {
-  
-  
     return (
       <div className='py-2'>
         <div>

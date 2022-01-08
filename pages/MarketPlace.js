@@ -11,7 +11,6 @@ export default function MarketPlace({initialNfts}) {
     useEffect(()=>{
         setNfts(initialNfts);
     }, []);
-
     
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -24,7 +23,7 @@ export default function MarketPlace({initialNfts}) {
         <div>
             <div className="mt-8 grid grid-cols-3">
             {currentPosts.map(function(nft, idx){
-                return (<NftCard nft={nft}/>)
+                return (<NftCard nft={nft} key={idx} />)
             })}
             <Pagination
                 postsPerPage={postsPerPage}
